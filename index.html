@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <title>Notes</title>
+</head>
+<body>
+
+    <header class="header">
+        <a href="">
+            <img src="./images/Notes.svg" alt="Notes">
+        </a>
+        <img src="./images/note.svg" alt="Note">
+        <span>Всего элементов:</span>
+        <span class="number-elements"></span>
+        </header>
+    
+    <section>
+
+        <form class="new-note">
+
+            <input type="text" placeholder="Напишите название новой заметки...">
+            <input type="text" placeholder="Напишите описание новой заметки...">
+
+            <input type="radio" name="color" id="yellow" checked>
+            <input type="radio" name="color" id="green">
+            <input type="radio" name="color" id="blue">
+            <input type="radio" name="color" id="red">
+            <input type="radio" name="color" id="purple">
+
+        </form>
+        <div class="show-favorites"></div>
+        <ul class="notes"></ul>
+        <div class="massages"></div>
+
+    </section>
+
+    <script src="./scripts/script.js"></script>
+</body>
+</html>
