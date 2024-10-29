@@ -10,11 +10,14 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
-
     <title>Notes</title>
   </head>
+
   <body>
+
     <header class="header">
+        <div class="container">
+            <div class="header-wrapper">
       <div class="logo">
         <a href="">
           <img src="./images/Notes.svg" alt="Notes" />
@@ -25,51 +28,69 @@
         <span class="text-notes">Всего элементов:</span>
         <span class="number-notes">0</span>
       </div>
+    </div>
+    </div>
     </header>
 
     <main class="new-note">
-      <form class="form-note">
-        <div class="title-note">
-          <h3>Название заметки</h3>
-          <input
-            type="text"
-            class="title-note-input"
-            placeholder="Напишите название новой заметки..."
-          />
+        <div class="container">
+            <form class="form-note">
+            
+                <div class="title-note">
+                    <h3>Название заметки</h3>
+                        <input
+                type="text"
+                class="title-note-input"
+                placeholder="Напишите название новой заметки..."
+                        />
+                </div>
+
+            <div class="content-and-color-and-button">
+                <div class="content-note">
+                    <h3>Описание новой заметки</h3>
+                        <textarea
+                            class="content-note-textarea"
+                            placeholder="Напишите описание новой заметки..."
+                        ></textarea>
+                </div>
+
+                <div class="color-and-button">
+                    <div class="color-note">
+                    <h3>Выберите цвет заметки</h3>
+                    <input type="radio" name="color" id="yellow" checked />
+                    <input type="radio" name="color" id="green" />
+                    <input type="radio" name="color" id="blue" />
+                    <input type="radio" name="color" id="red" />
+                    <input type="radio" name="color" id="purple" />
+                    </div>
+                
+                
+
+                    <div class="add-note">
+                        <button type="submit" class="add-note-button">
+                            + Добавить заметку
+                        </button>
+                    </div>
+                </div>
+                </div>
+
+            </form>
+            <div class="show-favorites">
+                <label for="show-favorites">Показать только избранные заметки</label>
+                <input type="checkbox" name="show-favorites" id="show-favorites" />
+            </div>
+
+            <div class="notes-list-wrapper">
+                <ul class="notes-list"></ul>
+            </div>
+            
+
+
+            <div class="messages">
+
+            </div>
+            
         </div>
-
-        <div class="content-note">
-          <h3>Описание новой заметки</h3>
-          <textarea
-            class="content-note-textarea"
-            placeholder="Напишите описание новой заметки..."
-          ></textarea>
-        </div>
-
-        <div class="color-note">
-          <h3>Выберите цвет заметки</h3>
-          <input type="radio" name="color" id="yellow" checked />
-          <input type="radio" name="color" id="green" />
-          <input type="radio" name="color" id="blue" />
-          <input type="radio" name="color" id="red" />
-          <input type="radio" name="color" id="purple" />
-        </div>
-
-        <div class="add-note">
-          <button type="submit" class="add-note-button">
-            + Добавить заметку
-          </button>
-        </div>
-      </form>
-
-      <div class="show-favorites">
-        <label for="show-favorites">Показать только избранные заметки</label>
-        <input type="checkbox" name="show-favorites" id="show-favorites" />
-      </div>
-
-      <ul class="notes-list"></ul>
-
-      <div class="messages"></div>
     </main>
 
     <script src="./scripts/script.js"></script>
