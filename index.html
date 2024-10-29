@@ -18,28 +18,43 @@
         </a>
         <img src="./images/note.svg" alt="Note">
         <span>Всего элементов:</span>
-        <span class="number-elements"></span>
+        <span class="number-elements">0</span>
         </header>
     
-    <section>
+    <main>
 
         <form class="new-note">
 
-            <input type="text" placeholder="Напишите название новой заметки...">
-            <input type="text" placeholder="Напишите описание новой заметки...">
+        <div>
+            <h3>Название заметки</h3>
+            <input type="text" id="title" placeholder="Напишите название новой заметки...">
+        </div>
+        <div>
+            <h3>Описание новой заметки</h3>
+            <textarea placeholder="Напишите описание новой заметки..."></textarea>
+        </div>
+            
 
+        <div>
+            <h3>Выберите цвет заметки</h3>
             <input type="radio" name="color" id="yellow" checked>
             <input type="radio" name="color" id="green">
             <input type="radio" name="color" id="blue">
             <input type="radio" name="color" id="red">
             <input type="radio" name="color" id="purple">
-
+        </div>
+        <div>
+            <button type="submit">+ Добавить заметку</button>
+        </div>
         </form>
-        <div class="show-favorites"></div>
+        <div class="show-favorites">
+            <label for="show-favorites">Показать только избранные заметки</label>
+            <input type="checkbox" name="show-favorites" id="show-favorites">
+        </div>
         <ul class="notes"></ul>
-        <div class="massages"></div>
+        <div class="messages"></div>
 
-    </section>
+    </main>
 
     <script src="./scripts/script.js"></script>
 </body>
