@@ -11,4 +11,101 @@ a, a:link, a:visited  {
 
 body {
     font-family: "Montserrat", sans-serif;
+    background: #fafafc;
 }
+
+.header {
+    box-shadow: 0 1px 3px 0 rgba(11, 12, 13, 0.16), 0 0 1px 0 rgba(11, 12, 13, 0.24);
+    background: #fff;
+    padding: 20px;
+}
+
+.total-notes {
+font-weight: 500;
+font-size: 16px;
+line-height: 150%;
+color: #000;
+}
+
+.number-notes {
+    font-weight: 700;
+}
+
+
+.form-note {
+border-radius: 4px;
+padding: 24px;
+box-shadow: 0 8px 12px 0 rgba(11, 12, 13, 0.08), 0 16px 24px 0 rgba(11, 12, 13, 0.04), 0 1px 2px 0 rgba(11, 12, 13, 0.08);
+background: #fff;
+
+margin: 24px 0;
+}
+
+h3 {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 200%;
+    color: #919191;
+    }
+
+.title-note-input {
+    border: 1px solid #e8e8e8;
+border-radius: 10px;
+padding: 6px 12px;
+
+width: 344px;
+max-width: 70%;
+height: 36px;
+
+font-family: var(--font-family);
+font-weight: 400;
+font-size: 14px;
+line-height: 171%;
+color: #919191;
+
+margin-bottom: 12px;
+}
+
+
+.content-note-textarea {
+    border: 1px solid #e8e8e8;
+border-radius: 10px;
+padding: 6px 12px;
+
+width: 848px;
+max-width: 70%;
+height: 84px;
+
+font-family: var(--font-family);
+font-weight: 400;
+font-size: 14px;
+line-height: 171%;
+color: #919191;
+
+margin-bottom: 12px;
+}
+
+
+.color-note  {
+    margin-bottom: 12px;
+}
+
+.add-note-button {
+border-radius: 10px;
+padding: 6px 24px;
+width: 232px;
+height: 36px;
+background: #457cdc;
+
+font-family: var(--font-family);
+font-weight: 500;
+font-size: 16px;
+line-height: 150%;
+color: #fff;
+
+margin-bottom: 12px;
+}
+
+
+

@@ -1,61 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
 
     <title>Notes</title>
-</head>
-<body>
-
+  </head>
+  <body>
     <header class="header">
+      <div class="logo">
         <a href="">
-            <img src="./images/Notes.svg" alt="Notes">
+          <img src="./images/Notes.svg" alt="Notes" />
         </a>
-        <img src="./images/note.svg" alt="Note">
-        <span>Всего элементов:</span>
-        <span class="number-elements">0</span>
-        </header>
-    
-    <main>
+      </div>
+      <div class="total-notes">
+        <img src="./images/note.svg" alt="Note" />
+        <span class="text-notes">Всего элементов:</span>
+        <span class="number-notes">0</span>
+      </div>
+    </header>
 
-        <form class="new-note">
+    <main class="new-note">
+      <form class="form-note">
+        <div class="title-note">
+          <h3>Название заметки</h3>
+          <input
+            type="text"
+            class="title-note-input"
+            placeholder="Напишите название новой заметки..."
+          />
+        </div>
 
-        <div>
-            <h3>Название заметки</h3>
-            <input type="text" id="title" placeholder="Напишите название новой заметки...">
+        <div class="content-note">
+          <h3>Описание новой заметки</h3>
+          <textarea
+            class="content-note-textarea"
+            placeholder="Напишите описание новой заметки..."
+          ></textarea>
         </div>
-        <div>
-            <h3>Описание новой заметки</h3>
-            <textarea placeholder="Напишите описание новой заметки..."></textarea>
-        </div>
-            
 
-        <div>
-            <h3>Выберите цвет заметки</h3>
-            <input type="radio" name="color" id="yellow" checked>
-            <input type="radio" name="color" id="green">
-            <input type="radio" name="color" id="blue">
-            <input type="radio" name="color" id="red">
-            <input type="radio" name="color" id="purple">
+        <div class="color-note">
+          <h3>Выберите цвет заметки</h3>
+          <input type="radio" name="color" id="yellow" checked />
+          <input type="radio" name="color" id="green" />
+          <input type="radio" name="color" id="blue" />
+          <input type="radio" name="color" id="red" />
+          <input type="radio" name="color" id="purple" />
         </div>
-        <div>
-            <button type="submit">+ Добавить заметку</button>
-        </div>
-        </form>
-        <div class="show-favorites">
-            <label for="show-favorites">Показать только избранные заметки</label>
-            <input type="checkbox" name="show-favorites" id="show-favorites">
-        </div>
-        <ul class="notes"></ul>
-        <div class="messages"></div>
 
+        <div class="add-note">
+          <button type="submit" class="add-note-button">
+            + Добавить заметку
+          </button>
+        </div>
+      </form>
+
+      <div class="show-favorites">
+        <label for="show-favorites">Показать только избранные заметки</label>
+        <input type="checkbox" name="show-favorites" id="show-favorites" />
+      </div>
+
+      <ul class="notes-list"></ul>
+
+      <div class="messages"></div>
     </main>
 
     <script src="./scripts/script.js"></script>
-</body>
+  </body>
 </html>
