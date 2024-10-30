@@ -46,33 +46,49 @@
                 </div>
 
             <div class="content-and-color-and-button">
+
                 <div class="content-note">
                     <h3>Описание новой заметки</h3>
-                        <textarea
-                            class="content-note-textarea"
-                            placeholder="Напишите описание новой заметки..."
-                        ></textarea>
+                    <textarea
+                        class="content-note-textarea"
+                        placeholder="Напишите описание новой заметки..."
+                    ></textarea>
                 </div>
 
                 <div class="color-and-button">
+
                     <div class="color-note">
-                    <h3>Выберите цвет заметки</h3>
-                    <input type="radio" name="color" id="yellow" checked />
-                    <input type="radio" name="color" id="green" />
-                    <input type="radio" name="color" id="blue" />
-                    <input type="radio" name="color" id="red" />
-                    <input type="radio" name="color" id="purple" />
+                        <fieldset class="fieldset">
+                            <legend class="label"><h3>Выберите цвет заметки</h3></legend>
+                            <ul class="radio-list">
+                              <li>
+                                <input checked class="radio" type="radio" name="color" value="yellow" aria-label="yellow" />
+                              </li>
+                              <li>
+                                <input class="radio" type="radio" name="color" value="red" aria-label="red" />
+                              </li>
+                              <li>
+                                <input class="radio" type="radio" name="color" value="green" aria-label="green" />
+                              </li>
+                              <li>
+                                <input class="radio" type="radio" name="color" value="blue" aria-label="blue" />
+                              </li>
+                              <li>
+                                <input class="radio" type="radio" name="color" value="purple" aria-label="purple" />
+                              </li>
+                            </ul>
+                          </fieldset>
                     </div>
                 
-                
-
                     <div class="add-note">
                         <button type="submit" class="add-note-button">
                             + Добавить заметку
                         </button>
                     </div>
+
                 </div>
-                </div>
+
+            </div>
 
             </form>
             <div class="show-favorites">
@@ -81,7 +97,123 @@
             </div>
 
             <div class="notes-list-wrapper">
-                <ul class="notes-list"></ul>
+                <dl class="notes-list">
+                    <div class="note">
+                        <dt>
+                            <div class="note-title" style="background-color: yellow;">
+                                <div>
+                                    <span>Заметка 1</span>
+                                </div>
+                                <div>
+                                    <button name="button-favorite">
+                                        <img src="./images/heart active.svg" alt="heart">
+                                    </button>
+                                    <button name="button-trash">
+                                        <img src="./images/trash.svg" alt="trash">
+                                    </button name="delete">
+                                </div>
+                            </div>
+                        </dt>
+                        <dd>
+                            <div class="note-content">
+                                <p>Это тестовая заментка. Вы все нигеры</p>
+                            </div>
+                            
+                        </dd>
+                    </div>
+                    <div class="note">
+                        <dt>
+                            <div class="note-title">
+                                <div>
+                                    <span>Заметка 2</span>
+                                </div>
+                                <div>
+                                    <button name="button-favorite">
+                                        <img src="./images/heart active.svg" alt="heart">
+                                    </button>
+                                    <button name="button-trash">
+                                        <img src="./images/trash.svg" alt="trash">
+                                    </button name="delete">
+                                </div>
+                            </div>
+                        </dt>
+                        <dd>
+                            <div class="note-content">
+                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit consectetur cum perspiciatis reiciendis delectus. Minima deleniti dicta deserunt doloremque quas.</p>
+                            </div>
+                            
+                        </dd>
+                    </div>
+                    <div class="note">
+                        <dt>
+                            <div class="note-title">
+                                <div>
+                                    <span>Заметка 3</span>
+                                </div>
+                                <div>
+                                    <button name="button-favorite">
+                                        <img src="./images/heart active.svg" alt="heart">
+                                    </button>
+                                    <button name="button-trash">
+                                        <img src="./images/trash.svg" alt="trash">
+                                    </button name="delete">
+                                </div>
+                            </div>
+                        </dt>
+                        <dd>
+                            <div class="note-content">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, quaerat!</p>
+                            </div>
+                            
+                        </dd>
+                    </div>
+                    <div class="note">
+                        <dt>
+                            <div class="note-title">
+                                <div>
+                                    <span>Заметка 4</span>
+                                </div>
+                                <div>
+                                    <button name="button-favorite">
+                                        <img src="./images/heart active.svg" alt="heart">
+                                    </button>
+                                    <button name="button-trash">
+                                        <img src="./images/trash.svg" alt="trash">
+                                    </button name="delete">
+                                </div>
+                            </div>
+                        </dt>
+                        <dd>
+                            <div class="note-content">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores nulla, libero incidunt recusandae voluptate mollitia voluptatibus sint! Minima eveniet maxime culpa ea enim veniam laudantium nobis, ullam aperiam quo fugiat.</p>
+                            </div>
+                            
+                        </dd>
+                    </div>
+                    <div class="note">
+                        <dt>
+                            <div class="note-title">
+                                <div>
+                                    <span>Заметка 5</span>
+                                </div>
+                                <div>
+                                    <button type="button" name="button-favorite" id="myButton">
+                                        <img src="./images/heart active.svg" alt="heart">
+                                    </button>
+                                    <button type="button" name="button-trash">
+                                        <img src="./images/trash.svg" alt="trash">
+                                    </button name="delete">
+                                </div>
+                            </div>
+                        </dt>
+                        <dd>
+                            <div class="note-content">
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem ipsum voluptas perspiciatis labore? Dicta ducimus velit necessitatibus molestiae nostrum placeat enim a reprehenderit fuga deserunt odio dolor iste repellendus nobis voluptate corporis atque sunt vitae exercitationem id possimus, maiores veniam repellat. Quae dolores illum exercitationem odit, unde distinctio eius ipsum?</p>
+                            </div>
+                            
+                        </dd>
+                    </div>
+                </dl>
             </div>
             
 
