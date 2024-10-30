@@ -95,6 +95,21 @@ const view = {
 
       })
 
+        const list = document.querySelector(".notes-list")
+
+      list.addEventListener("click", (event) => {
+        if (event.target.classList) {
+          const noteId = +event.target.parentElement.dt.id
+          alert(noteId)
+          console.log("Ok!")
+        }
+      })
+
+      const favorites = document.querySelector("#show-favorites")
+      favorites.onchange = function() {
+        this.checked ? controller.showFavorites() : controller.showAll()
+      }
+  
   },
 
   renderNotes(notes) {
@@ -117,10 +132,10 @@ const view = {
                             <span>${notes[i].title}</span>
                         </div>
                         <div>
-                            <button name="button-favorite">
+                            <button type="submit" class="button-favorite" name="button-favorite">
                 ${notes[i].isFavorite ? '<img src="./images/heart active.svg" alt="heart"></img>' : '<img src="./images/heart inactive.svg" alt="heart"></img>'}
                             </button>
-                            <button name="button-trash">
+                            <button type="submit" name="button-trash" class="button-trash">
                                 <img src="./images/trash.svg" alt="trash">
                             </button name="delete">
                         </div>
@@ -137,18 +152,8 @@ const view = {
     }
     notesList.innerHTML = notesHTML;
     // также здесь можно будет повесить обработчики кликов на кнопки удаления и избранного
-const toogleFavorite = document.querySelector(".notes-list")
-toogleFavorite.addEventListener("click", function(event) {
-    if (event.target.nameLi.contains("button-favorite")) {
-        const taskId = +event.target.parentElement.id
-        console.log(taskId);
-        
-    }
-})
-
-
-
   },
+
 
 
 
@@ -165,7 +170,11 @@ const controller = {
 
     showFavorites() {
         model.showFavorites()
-    }
+    },
+
+    showAll() {
+      model.showAll()
+  }
 
 }
 
