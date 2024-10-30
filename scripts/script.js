@@ -97,13 +97,13 @@ const view = {
 
         const list = document.querySelector(".notes-list")
 
-      list.addEventListener("click", (event) => {
-        if (event.target.classList) {
-          const noteId = +event.target.parentElement.dt.id
-          alert(noteId)
-          console.log("Ok!")
-        }
-      })
+      // list.addEventListener("click", (event) => {
+      //   if (event.target.classList) {
+      //     const noteId = +event.target.parentElement.dt.id
+      //     alert(noteId)
+      //     console.log("Ok!")
+      //   }
+      // })
 
       const favorites = document.querySelector("#show-favorites")
       favorites.onchange = function() {
