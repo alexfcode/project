@@ -1,107 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./styles/styles.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <title>Notes</title>
-  </head>
 
-  <body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./styles/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet" />
+  <title>Notes</title>
+</head>
 
-    <header class="header">
-        <!-- Наш хедер -->
-        <div class="container">
-            <div class="header-wrapper">
-      <div class="logo">
-        <a href="">
-          <img src="./images/Notes.svg" alt="Notes" />
-        </a>
-      </div>
-      <div class="total-notes">
-        <img src="./images/note.svg" alt="Note" />
-        <span class="text-notes">Всего элементов:</span>
-        <span class="number-notes">0</span>
-      </div>
-    </div>
-    </div>
-    </header>
-
-    <main class="new-note">
-        <div class="container">
-            <form class="form-note">
-                <!-- Форма для добавления новых заметок -->
-                <div class="title-note">
-                    <h3>Название заметки</h3>
-                        <input
-                type="text"
-                class="title-note-input"
-                placeholder="Напишите название новой заметки..."
-                        />
-                </div>
-            <div class="content-and-color-and-button">
-                <div class="content-note">
-                    <h3>Описание новой заметки</h3>
-                    <textarea
-                        class="content-note-textarea"
-                        placeholder="Напишите описание новой заметки..."
-                    ></textarea>
-                </div>
-                <div class="color-and-button">
-                    <div class="color-note">
-                        <fieldset class="fieldset">
-                            <legend class="label"><h3>Выберите цвет заметки</h3></legend>
-                            <ul class="radio-list">
-                              <li>
-                                <input checked class="radio" type="radio" name="color" value="yellow" aria-label="yellow" />
-                              </li>
-                              <li>
-                                <input class="radio" type="radio" name="color" value="red" aria-label="red" />
-                              </li>
-                              <li>
-                                <input class="radio" type="radio" name="color" value="green" aria-label="green" />
-                              </li>
-                              <li>
-                                <input class="radio" type="radio" name="color" value="blue" aria-label="blue" />
-                              </li>
-                              <li>
-                                <input class="radio" type="radio" name="color" value="purple" aria-label="purple" />
-                              </li>
-                            </ul>
-                          </fieldset>
-                    </div>
-                    <div class="add-note">
-                        <button type="submit" class="add-note-button">
-                            + Добавить заметку
-                        </button>
-                    </div>
-                </div>
-            </div>
-            </form>
-
-            <div class="show-favorites">
-                <!-- Чекбокс для показа только избранных -->
-                <label for="show-favorites">Показать только избранные заметки</label>
-                <input type="checkbox" name="show-favorites" id="show-favorites" />
-            </div>
-
-            <div class="message-box">
-              <!-- Здесь будут генериться валидашки -->
-            </div>
-
-            <div class="notes-list-wrapper">
-                <dl class="notes-list">
-                  <!-- Сюда будут вставляться заметки -->
-                </dl>
-            </div>
+<body>
+  <!-- Наш хедер -->
+  <header class="header">
+    <div class="container">
+      <div class="header-wrapper">
+        <div class="logo">
+          <a href="">
+            <img src="./images/Notes.svg" alt="Notes" />
+          </a>
         </div>
-    </main>
-    <script src="./scripts/script.js"></script>
-  </body>
+        <div class="total-notes">
+          <img src="./images/note.svg" alt="Note" />
+          <span class="text-notes">Всего элементов:</span>
+          <span class="number-notes">0</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="new-note">
+    <div class="container">
+      <form class="form-note">
+        <!-- Форма для добавления новых заметок -->
+        <div class="title-note">
+          <h3>Название заметки</h3>
+          <input type="text" class="title-note-input" placeholder="Напишите название новой заметки..." />
+        </div>
+        <div class="content-and-color-and-button">
+          <div class="content-note">
+            <h3>Описание новой заметки</h3>
+            <textarea class="content-note-textarea" placeholder="Напишите описание новой заметки..."></textarea>
+          </div>
+          <div class="color-and-button">
+            <div class="color-note">
+              <fieldset class="fieldset">
+                <legend class="label">
+                  <h3>Выберите цвет заметки</h3>
+                </legend>
+                <ul class="radio-list">
+                  <li>
+                    <input checked class="radio" type="radio" name="color" value="yellow" aria-label="yellow" />
+                  </li>
+                  <li>
+                    <input class="radio" type="radio" name="color" value="red" aria-label="red" />
+                  </li>
+                  <li>
+                    <input class="radio" type="radio" name="color" value="green" aria-label="green" />
+                  </li>
+                  <li>
+                    <input class="radio" type="radio" name="color" value="blue" aria-label="blue" />
+                  </li>
+                  <li>
+                    <input class="radio" type="radio" name="color" value="purple" aria-label="purple" />
+                  </li>
+                </ul>
+              </fieldset>
+            </div>
+            <div class="add-note">
+              <button type="submit" class="add-note-button">
+                + Добавить заметку
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <div class="show-favorites">
+        <!-- Чекбокс для показа только избранных -->
+        <label for="show-favorites">Показать только избранные заметки</label>
+        <input type="checkbox" name="show-favorites" id="show-favorites" />
+      </div>
+
+      <div class="message-box">
+        <!-- Здесь будут генериться валидашки -->
+      </div>
+
+      <div class="notes-list-wrapper">
+        <dl class="notes-list">
+          <!-- Сюда будут вставляться заметки -->
+        </dl>
+      </div>
+    </div>
+  </main>
+  <script src="./scripts/script.js"></script>
+</body>
+
 </html>
