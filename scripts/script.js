@@ -54,104 +54,99 @@ const colors = {
 
 const model = {
   // notes: MOCK_LIST,
-    notes: [],
+  notes: [],
 
-    // Добавляем новую заметку:
-    createNote(title, content, color) {
-        const id = new Date().getTime()
-        const newNote = { id, title, content, color, isFavorite: false}
-        this.notes.unshift(newNote)
-        view.renderNotes(this.notes)
-    },
+  // Добавляем новую заметку:
+  createNote(title, content, color) {
+    const id = new Date().getTime();
+    const newNote = { id, title, content, color, isFavorite: false };
+    this.notes.unshift(newNote);
+    view.renderNotes(this.notes);
+    view.showMessage("Заметка добавлена", "green");
+  },
 
-    // Удаляем заметку по Id:
-    deleteNote(noteId) {
-        this.notes = this.notes.filter(note => note.id != noteId)
-        view.renderNotes(this.notes)
-    },
+  // Удаляем заметку по Id:
+  deleteNote(noteId) {
+    this.notes = this.notes.filter((note) => note.id != noteId);
+    view.renderNotes(this.notes);
+    view.showMessage("Заметка удалена", "green");
+  },
 
-    toogleNote(noteId) {
-      this.notes = this.notes.map((note) => {
-        if (note.id == noteId) {
-          note.isFavorite = !note.isFavorite
-        }
-        return note
-      })
-      view.renderNotes(this.notes)
-    },
+  // Добавить/удалить в избранное
+  toogleNote(noteId) {
+    this.notes = this.notes.map((note) => {
+      if (note.id == noteId) {
+        note.isFavorite = !note.isFavorite;
+      }
+      return note;
+    });
+    view.renderNotes(this.notes);
+  },
 
+  // Показать только избанные заметки:
+  showFavorites() {
+    view.renderNotes(this.notes.filter((note) => note.isFavorite));
+  },
 
-    // Показать только избанные заметки:
-    showFavorites() {
-        view.renderNotes(this.notes.filter(note => note.isFavorite))
-    },    
-    
-    // Показать все заметки:
-    showAll() {
-        view.renderNotes(this.notes)
-    }
+  // Показать все заметки:
+  showAll() {
+    view.renderNotes(this.notes);
+  },
 };
 
 const view = {
   init() {
-    
-      this.renderNotes(model.notes)
+    this.renderNotes(model.notes);
 
-      const form = document.querySelector(".form-note")
-      
+    const form = document.querySelector(".form-note");
 
-      // Обработчик кнопки формы "Добавить заметку":
-      form.addEventListener("submit", function (event) {
-        event.preventDefault()
-        const title = document.querySelector(".title-note-input").value
-        const content = document.querySelector(".content-note-textarea").value
-        const color = document.querySelector(".radio:checked").value
-        controller.createNote(title, content, color)
-        
-        //Обнуляем поля ввода после отправки формы:
-        // title = '' - не работает почему-то
-        // content = ''  - не работает почему-то
-        document.querySelector(".title-note-input").value = ""
-        document.querySelector(".content-note-textarea").value = ""
+    // Обработчик кнопки формы "Добавить заметку":
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      const title = document.querySelector(".title-note-input").value;
+      const content = document.querySelector(".content-note-textarea").value;
+      const color = document.querySelector(".radio:checked").value;
+      controller.createNote(title, content, color);
 
-      })
+      //Обнуляем поля ввода после отправки формы:
+      // title = '' - не работает почему-то
+      // content = ''  - не работает почему-то
+      document.querySelector(".title-note-input").value = "";
+      document.querySelector(".content-note-textarea").value = "";
+    });
 
-      const list = document.querySelector(".notes-list")  
+    const list = document.querySelector(".notes-list");
 
-        // Обработчик иконки "Избранное"
-      list.addEventListener("click", function (event) {
-        if (event.target.classList.contains("button-favorite")) {
-          let noteId = event.target.parentElement.parentElement.parentElement.id
-          controller.toogleNote(noteId)
-        }
-      })
+    // Обработчик иконки "Избранное"
+    list.addEventListener("click", function (event) {
+      if (event.target.classList.contains("button-favorite")) {
+        let noteId = event.target.parentElement.parentElement.parentElement.id;
+        controller.toogleNote(noteId);
+      }
+    });
 
-        // Обработчик иконки "Удалить"
-        list.addEventListener("click", function (event) {
-          if (event.target.classList.contains("button-trash")) {
-            let noteId = event.target.parentElement.parentElement.parentElement.id
-            controller.deleteNote(noteId)
-          }
-        })
+    // Обработчик иконки "Удалить"
+    list.addEventListener("click", function (event) {
+      if (event.target.classList.contains("button-trash")) {
+        let noteId = event.target.parentElement.parentElement.parentElement.id;
+        controller.deleteNote(noteId);
+      }
+    });
 
-
-      // Обработчик чекбокса "Только избранное":
-        const favorites = document.querySelector("#show-favorites")
-        favorites.addEventListener("change", function() {
-          this.checked ? controller.showFavorites() : controller.showAll()
-        })
-
-  
+    // Обработчик чекбокса "Только избранное":
+    const favorites = document.querySelector("#show-favorites");
+    favorites.addEventListener("change", function () {
+      this.checked ? controller.showFavorites() : controller.showAll();
+    });
   },
 
   renderNotes(notes) {
     // находим контейнер для заметок и рендерим заметки в него (если заметок нет, отображаем соответствующий текст)
-
     let notesHTML = "";
     let alertMessage = "";
     const notesList = document.querySelector(".notes-list");
-    const messages = document.querySelector(".messages")
-    const numberNotes = document.querySelector(".number-notes")
+    const messages = document.querySelector(".messages");
+    const numberNotes = document.querySelector(".number-notes");
 
     for (let i = 0; i < notes.length; i++) {
       notesHTML += `
@@ -166,7 +161,11 @@ const view = {
                             <span>${notes[i].title}</span>
                         </div>
                         <div>
-                            <input type="image" class="button-favorite" name="button-favorite" ${notes[i].isFavorite ? 'src="./images/heart active.svg" alt="heart"' : 'src="./images/heart inactive.svg" alt="heart"'}>
+                            <input type="image" class="button-favorite" name="button-favorite" ${
+                              notes[i].isFavorite
+                                ? 'src="./images/heart active.svg" alt="heart"'
+                                : 'src="./images/heart inactive.svg" alt="heart"'
+                            }>
                             <input type="image" name="button-trash" class="button-trash" src="./images/trash.svg" alt="trash">
                         </div>
                     </div>
@@ -180,50 +179,64 @@ const view = {
             </div>
             `;
     }
-    
+
     if (model.notes.length == 0) {
       notesList.innerHTML = `
     <p class="validation">У вас нет еще ни одной заметки
 Заполните поля выше и создайте свою первую заметку!</p>
-` } else {
-  notesList.innerHTML = notesHTML;
-} 
+`;
+    } else {
+      notesList.innerHTML = notesHTML;
+    }
     // Счетчик заметок:
-    numberNotes.innerHTML = notes.length
-  
+    numberNotes.innerHTML = notes.length;
   },
   showError() {
-    alertMessage = `<img src="./images/Error.svg" alt="Error">`
-    messages.innerHTML = notesHTML; 
-    
+    alertMessage = `<img src="./images/Error.svg" alt="Error">`;
+    messages.innerHTML = notesHTML;
   },
-  showDone () {
-    alertMessage = `<img src="./images/Done.svg" alt="Done">`
-    messages.innerHTML = notesHTML; 
-  }
+  showDone() {
+    alertMessage = `<img src="./images/Done.svg" alt="Done">`;
+    messages.innerHTML = notesHTML;
+  },
+
+  showMessage(text, color) {
+    const messageBox = document.querySelector(".message-box");
+    messageBox.innerHTML = `<div id="alert" class="message-box-${color}"><p>${text}</p><div>`;
+
+    window.setTimeout(function () {
+      document.getElementById("alert").outerHTML = "";
+    }, 3000);
+  },
 };
 
 const controller = {
-    createNote(title, content, color) {
-        model.createNote(title, content, color)
-    },
-    deleteNote(noteId) {
-        model.deleteNote(noteId)
-    },
-    toogleNote(noteId) {
-      model.toogleNote(noteId)
+  createNote(title, content, color) {
+    if (title.trim() !== "" && title.length <= 50 && content.trim() !== "") {
+      model.createNote(title, content, color);
+    } else if (title.length > 50) {
+      view.showMessage("Максимальная длина заголовка - 50 символов", "red");
+    } else {
+      view.showMessage("Заполните все поля!", "red");
+    }
   },
-    showFavorites() {
-        model.showFavorites()
-    },
-    showAll() {
-      model.showAll()
+  deleteNote(noteId) {
+    model.deleteNote(noteId);
   },
-}
+  toogleNote(noteId) {
+    model.toogleNote(noteId);
+  },
+  showFavorites() {
+    model.showFavorites();
+  },
+
+  showAll() {
+    model.showAll();
+  },
+};
 
 function init() {
-    view.init()
-  }
-  
-  document.addEventListener('DOMContentLoaded', init)
+  view.init();
+}
 
+document.addEventListener("DOMContentLoaded", init);
