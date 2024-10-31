@@ -53,9 +53,10 @@ const colors = {
 };
 
 const model = {
-  notes: MOCK_LIST,
-    // notes: [],
+  // notes: MOCK_LIST,
+    notes: [],
 
+    // Добавляем новую заметку:
     createNote(title, content, color) {
         const id = new Date().getTime()
         const newNote = { id, title, content, color, isFavorite: false}
@@ -63,14 +64,29 @@ const model = {
         view.renderNotes(this.notes)
     },
 
+    // Удаляем заметку по Id:
     deleteNote(noteId) {
-        this.notes = this.notes.filter(note => note.id !== noteId)
+        this.notes = this.notes.filter(note => note.id != noteId)
         view.renderNotes(this.notes)
     },
 
+    toogleNote(noteId) {
+      this.notes = this.notes.map((note) => {
+        if (note.id == noteId) {
+          note.isFavorite = !note.isFavorite
+        }
+        return note
+      })
+      view.renderNotes(this.notes)
+    },
+
+
+    // Показать только избанные заметки:
     showFavorites() {
         view.renderNotes(this.notes.filter(note => note.isFavorite))
     },    
+    
+    // Показать все заметки:
     showAll() {
         view.renderNotes(this.notes)
     }
@@ -78,51 +94,69 @@ const model = {
 
 const view = {
   init() {
+    
       this.renderNotes(model.notes)
 
       const form = document.querySelector(".form-note")
       
+
+      // Обработчик кнопки формы "Добавить заметку":
       form.addEventListener("submit", function (event) {
         event.preventDefault()
         const title = document.querySelector(".title-note-input").value
         const content = document.querySelector(".content-note-textarea").value
         const color = document.querySelector(".radio:checked").value
         controller.createNote(title, content, color)
-        // title = ''
-        // content = ''
+        
+        //Обнуляем поля ввода после отправки формы:
+        // title = '' - не работает почему-то
+        // content = ''  - не работает почему-то
         document.querySelector(".title-note-input").value = ""
         document.querySelector(".content-note-textarea").value = ""
 
       })
 
-        const list = document.querySelector(".notes-list")
+      const list = document.querySelector(".notes-list")  
 
-      // list.addEventListener("click", (event) => {
-      //   if (event.target.classList) {
-      //     const noteId = +event.target.parentElement.dt.id
-      //     alert(noteId)
-      //     console.log("Ok!")
-      //   }
-      // })
+        // Обработчик иконки "Избранное"
+      list.addEventListener("click", function (event) {
+        if (event.target.classList.contains("button-favorite")) {
+          let noteId = event.target.parentElement.parentElement.parentElement.id
+          controller.toogleNote(noteId)
+        }
+      })
 
-      const favorites = document.querySelector("#show-favorites")
-      favorites.onchange = function() {
-        this.checked ? controller.showFavorites() : controller.showAll()
-      }
+        // Обработчик иконки "Удалить"
+        list.addEventListener("click", function (event) {
+          if (event.target.classList.contains("button-trash")) {
+            let noteId = event.target.parentElement.parentElement.parentElement.id
+            controller.deleteNote(noteId)
+          }
+        })
+
+
+      // Обработчик чекбокса "Только избранное":
+        const favorites = document.querySelector("#show-favorites")
+        favorites.addEventListener("change", function() {
+          this.checked ? controller.showFavorites() : controller.showAll()
+        })
+
   
   },
 
   renderNotes(notes) {
     // находим контейнер для заметок и рендерим заметки в него (если заметок нет, отображаем соответствующий текст)
+
     let notesHTML = "";
+    let alertMessage = "";
     const notesList = document.querySelector(".notes-list");
-    const form = document.querySelector(".new-note");
-    const title = document.querySelector(".new-note");
+    const messages = document.querySelector(".messages")
+    const numberNotes = document.querySelector(".number-notes")
 
     for (let i = 0; i < notes.length; i++) {
       notesHTML += `
             <div class="note">
-                <dt id="${notes[i].id} class="${
+                <dt id="${notes[i].id}" class="${
         notes[i].isFavorite ? "favorite" : "notFavorite"
       }">
                     <div class="note-title" style="background-color: ${
@@ -132,12 +166,8 @@ const view = {
                             <span>${notes[i].title}</span>
                         </div>
                         <div>
-                            <button type="submit" class="button-favorite" name="button-favorite">
-                ${notes[i].isFavorite ? '<img src="./images/heart active.svg" alt="heart"></img>' : '<img src="./images/heart inactive.svg" alt="heart"></img>'}
-                            </button>
-                            <button type="submit" name="button-trash" class="button-trash">
-                                <img src="./images/trash.svg" alt="trash">
-                            </button name="delete">
+                            <input type="image" class="button-favorite" name="button-favorite" ${notes[i].isFavorite ? 'src="./images/heart active.svg" alt="heart"' : 'src="./images/heart inactive.svg" alt="heart"'}>
+                            <input type="image" name="button-trash" class="button-trash" src="./images/trash.svg" alt="trash">
                         </div>
                     </div>
                 </dt>
@@ -150,32 +180,45 @@ const view = {
             </div>
             `;
     }
-    notesList.innerHTML = notesHTML;
-    // также здесь можно будет повесить обработчики кликов на кнопки удаления и избранного
+    
+    if (model.notes.length == 0) {
+      notesList.innerHTML = `
+    <p class="validation">У вас нет еще ни одной заметки
+Заполните поля выше и создайте свою первую заметку!</p>
+` } else {
+  notesList.innerHTML = notesHTML;
+} 
+    // Счетчик заметок:
+    numberNotes.innerHTML = notes.length
+  
   },
-
-
-
-
+  showError() {
+    alertMessage = `<img src="./images/Error.svg" alt="Error">`
+    messages.innerHTML = notesHTML; 
+    
+  },
+  showDone () {
+    alertMessage = `<img src="./images/Done.svg" alt="Done">`
+    messages.innerHTML = notesHTML; 
+  }
 };
 
 const controller = {
     createNote(title, content, color) {
         model.createNote(title, content, color)
     },
-
     deleteNote(noteId) {
         model.deleteNote(noteId)
     },
-
+    toogleNote(noteId) {
+      model.toogleNote(noteId)
+  },
     showFavorites() {
         model.showFavorites()
     },
-
     showAll() {
       model.showAll()
-  }
-
+  },
 }
 
 function init() {

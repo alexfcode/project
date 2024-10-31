@@ -68,6 +68,8 @@ h3 {
   color: #919191;
 }
 
+
+
 .title-note-input,
 .content-note-textarea {
   border: 1px solid #e8e8e8;
@@ -205,6 +207,11 @@ legend {
   gap: 8px;
 }
 
+.messages {
+  display: flex;
+  justify-content: center;
+}
+
 .notes-list {
   display: flex;
   flex-flow: row wrap;
@@ -221,10 +228,10 @@ legend {
     0 8px 16px 0 rgba(11, 12, 13, 0.04), 0 1px 2px 0 rgba(11, 12, 13, 0.08);
 }
 
-button {
+/* button {
   border: none;
   background-color: transparent;
-}
+} */
 
 .note-title {
   display: flex;
@@ -238,4 +245,14 @@ button {
 
 .note-content {
   padding: 12px;
+}
+
+.validation {
+  font-family: var(--font-family);
+font-weight: 500;
+font-size: 16px;
+line-height: 150%;
+text-align: center;
+color: #000;
+padding: 10px;
 }
