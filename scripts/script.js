@@ -103,17 +103,14 @@ const view = {
     // Обработчик кнопки формы "Добавить заметку":
     form.addEventListener("submit", function (event) {
       event.preventDefault();
-      let titleElem = document.querySelector(".title-note-input");
-      let title = document.querySelector(".title-note-input").value;
-      const content = document.querySelector(".content-note-textarea").value;
-      const color = document.querySelector(".radio:checked").value;
-      controller.createNote(title, content, color);
+      const title = document.querySelector(".title-note-input")
+      const content = document.querySelector(".content-note-textarea")
+      const color = document.querySelector(".radio:checked")
+      controller.createNote(title.value, content.value, color.value);
 
       //Обнуляем поля ввода после отправки формы:
-      titleElem.value = '13'
-      // content = ''  - не работает почему-то
-      // document.querySelector(".title-note-input").value = "";
-      document.querySelector(".content-note-textarea").value = "";
+      title.value = ''
+      content.value = "";
     });
 
     const list = document.querySelector(".notes-list");
